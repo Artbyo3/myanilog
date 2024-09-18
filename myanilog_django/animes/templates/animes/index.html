@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myanilog/animes</title>
 </head>
+
 <body>
-    
 
 
-<h1>Animes page  
+    <main>
+        <h1>Animes page
+            Test
+            Welcome to index
+        </h1>
 
-    Test
-
-    Welcome to index
-</h1>
+        <p>Select your anime </p>
+        <img src="h22.jpg" alt="Test Image">
 
 
+        {% load static %}
+        <img src="{% static 'animes/example.png' %}" alt="My example image">
+    </main>
 
-<p>Select your anime </p>
-<img src="h22.jpg" alt="Test Image">
+
+
+
 
 
 </body>
+
 </html>
