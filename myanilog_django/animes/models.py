@@ -13,7 +13,7 @@ class Genres(models.Model):
 
 # New model for animes
 class Animes(models.Model):
-    # ADD id Auto
+    id = models.AutoField(primary_key=True)
     title_romaji = models.CharField(max_length=255)
     title_english = models.CharField(max_length=255, blank=True)
     plot = models.TextField()
