@@ -1,27 +1,36 @@
+{% extends 'animes/layouts/base.html' %}
+{% load static%}
+{% block title %}Anime List{% endblock %}
 {% block content %}
-{% load static %}
-<header>
-    <!-- Later-->
+<!DOCTYPE html>
+<html lang="en">
 
-</header>
-
-
-<main>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia quod tempora provident, ipsum aliquam earum
-        amet. Explicabo, deserunt accusamus velit non, nobis quisquam necessitatibus cupiditate, hic dicta repudiandae
-        asperiores alias?
-    </p>
-</main>
-
-
-
-<img src="{% static 'animes/images/example.png' %}" alt="#" width="500px">
-
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'animes/css/styles.css' %}">
+    <title>Animes list</title>
+</head>
 
 <body>
 
+    <h1>Animes list</h1>
 
+    <main>
+
+        <ul>
+            {% for anime in animes %}
+
+
+            <li>{{ anime.title_romaji }} - {{ anime.genre }}</li>
+
+            {% empty %}
+            <li>Nothing here .</li>
+            {% endfor %}
+        </ul>
+
+    </main>
 </body>
 
+</html>
 
 {% endblock %}
