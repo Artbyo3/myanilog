@@ -1,36 +1,37 @@
 {% extends 'animes/layouts/base.html' %}
-{% load static%}
-{% block title %}Anime List{% endblock %}
+{% load static %}
+{% block title %}Myanilog{% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'animes/css/styles.css' %}">
-    <title>Animes list</title>
-</head>
-
-<body>
-
-    <h1>Animes list</h1>
-
-    <main>
-
-        <ul>
-            {% for anime in animes %}
 
 
-            <li>{{ anime.title_romaji }} - {{ anime.genre }}</li>
+
+
+
+
+<main>
+
+    <h1>Animes List</h1>
+
+    <div class="anime-cards">
+
+        {% for anime in animes %}
+
+        <div class="anime-card">
+            <img src="{{ anime.image_url }}" alt="{{ anime.title_romaji }} cover" class="anime-image">
+            <h2>{{ anime.title_romaji }}</h2>
+            <p>Genres: {{ anime.genres }}</p>
+
 
             {% empty %}
-            <li>Nothing here .</li>
+            <p>Nothing here.</p>
             {% endfor %}
-        </ul>
 
-    </main>
-</body>
+        </div>
 
-</html>
+    </div>
+
+</main>
+
+
 
 {% endblock %}

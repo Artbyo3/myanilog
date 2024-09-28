@@ -1,5 +1,15 @@
-main {
-    background-color: #121212;
-    color: pink;
+/*   Only animes load contents styles here   */
 
+
+.anime-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+
+}
+
+.anime-card {
+    max-width: 300px;
+    background-color: red;
 }

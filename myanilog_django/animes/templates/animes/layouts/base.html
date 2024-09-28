@@ -1,16 +1,33 @@
-<nav>
-    <ul>
+<!DOCTYPE html>
+<html lang="en">
 
-        <li>
-            <a href="{% url 'anime_list' %}">Animes</a>
-        </li>
-        <li>
-            <a href="{% url 'admin:index' %}">Admin</a>
-        </li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base{% endblock %}</title>
+    {% load static %}
+    
 
+    <link rel="stylesheet" href="{% static 'animes/css/common/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'animes/css/styles.css' %}">
 
-    </ul>
-</nav>
+</head>
 
-{% block content %}
-{% endblock %}
+<body>
+ 
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Animes</a>
+            </li>
+            <li>
+                <a href="{% url 'admin:index' %}">Admin</a>
+            </li>
+        </ul>
+    </nav>
+
+    {% block content %} <!-- Here load pages content -->
+    {% endblock %}
+</body>
+
+</html>

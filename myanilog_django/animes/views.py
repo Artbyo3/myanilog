@@ -1,8 +1,8 @@
-
-from django.shortcuts import render
+from django.views.generic import ListView
 from .models import Animes
 
 
-def anime_list(request):
-    animes = Animes.objects.all()
-    return render(request, 'animes/index.html', {'animes': animes})
+class animes_list_view(ListView):
+    model = Animes
+    template_name = 'animes/index.html'
+    context_object_name = 'animes'

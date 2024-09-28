@@ -1,8 +1,6 @@
-
 from django.urls import path
-from . import views
+from .views import animes_list_view
 
 urlpatterns = [
-
-    path('', views.anime_list, name='anime_list'),
+    path('', animes_list_view.as_view(), name='index'),
 ]
