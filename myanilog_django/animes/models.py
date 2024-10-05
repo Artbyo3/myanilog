@@ -1,3 +1,4 @@
+import os
 from django.db import models
 
 
@@ -9,7 +10,13 @@ class Genres(models.Model):
         return self.Genre_name
 # END MODEL Genres.
 
+
 # New model for animes
+# \Function to generate names for each anime.
+def generate_filename(instance, filename):
+    title = instance.title_romaji.replace(" ", "_")
+    ext = os.path.splitext(filename)[1]
+    return f'anime_images/covers/{title}_cover{ext}'
 
 
 class Animes(models.Model):
@@ -40,7 +47,8 @@ class Animes(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
     studio = models.CharField(max_length=20, blank=True)
-    # cover_image = models.ImageField(upload_to='#', blank=True)
+    cover_image = models.ImageField(
+        upload_to=generate_filename, default='anime_images/covers/default_cover.jpg')
 
     # "ONGOING" = Database entry, "Ongoig" = Human reading value.
     STATUS_CHOISES = [
