@@ -1,41 +1,61 @@
 from django.db import models
 
-# New model for genres
-
 
 class Genres(models.Model):
     id = models.AutoField(primary_key=True)
-    Genre_name = models.CharField(max_length=100, unique=True)
+    Genre_name = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
         return self.Genre_name
-
+# END MODEL Genres.
 
 # New model for animes
+
+
 class Animes(models.Model):
     id = models.AutoField(primary_key=True)
-    title_romaji = models.CharField(max_length=255)
-    title_english = models.CharField(max_length=255, blank=True)
+    title_romaji = models.CharField(max_length=50)
+    title_english = models.CharField(max_length=50, blank=True)
     plot = models.TextField()
     episodes = models.PositiveIntegerField()
-    season = models.CharField(max_length=50)
-    # "ANIME" = Database entry, "anime" = Human reading value.
-    anime_type = models.CharField(max_length=50, choices=[
-                                  ('ANIME', 'Anime'), ('MOVIE', 'Movie')])
+
+    SEASON_CHOICES = [
+        ('WINTER', 'Winter'),
+        ('SPRING', 'Spring'),
+        ('SUMMER', 'Summer'),
+        ('FALL', 'Fall'),
+    ]
+    season = models.CharField(max_length=6, choices=SEASON_CHOICES)
+
+    ANIME_TYPE_CHOICES = [
+        ('ANIME', 'Anime Series'),
+        ('MOVIE', 'Movie'),
+        ('OVA', 'Original Video Animation'),
+        ('ONA', 'Original Net Animation'),
+        ('SPECIAL', 'Special'),
+    ]
+    anime_type = models.CharField(max_length=50, choices=ANIME_TYPE_CHOICES)
+
     # score field maybe later.
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
-    studio = models.CharField(max_length=100, blank=True)
+    studio = models.CharField(max_length=20, blank=True)
     # cover_image = models.ImageField(upload_to='#', blank=True)
+
     # "ONGOING" = Database entry, "Ongoig" = Human reading value.
-    status = models.CharField(max_length=50, choices=[
-                              ('ONGOING', 'Ongoing'), ('FINISHED', 'Finished')], default='ONGOING')
-    # Model many to many with Genres model.
+    STATUS_CHOISES = [
+        ('ONGOING', 'Ongoing'),
+        ('FINISHED', 'Finished'),
+    ]
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOISES, default='ONGOING')
+
+    # \ Model many to many with Genres model.
     genres = models.ManyToManyField(Genres)
 
     def __str__(self):
         return self.title_romaji
+    # END MODEL Animes.
 
-
-# python manage.py makemigrations
-# python manage.py migrate
+    # python manage.py makemigrations
+    # python manage.py migrate

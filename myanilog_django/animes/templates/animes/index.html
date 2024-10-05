@@ -1,12 +1,11 @@
-{% extends 'animes/layouts/base.html' %}
+{% extends 'core/layouts/base.html' %}
 {% load static %}
-{% block title %}Myanilog{% endblock %}
+{% block title %}#name#{% endblock %}
 {% block content %}
 
-
-
-
-
+{% block styles %}
+<link rel="stylesheet" href="{% static 'animes/css/animes_styles.css' %}">
+{% endblock %}
 
 <main>
 

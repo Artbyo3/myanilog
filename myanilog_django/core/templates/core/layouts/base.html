@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A site for tracking anime.">
+    <meta name="author" content="artbyo3">
+   <!-- <link rel="icon" href="" type="image/x-icon">-->
+    <title>{% block title %}##Name##{% endblock %}</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/common/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <nav role="navigation" aria-label="Main Navigation">
+            <ul>
+                <li>
+                    <a href="{% url 'index' %}">Animes</a>
+                </li>
+                <li>
+                    <a href="{% url 'admin:index' %}">Admin</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %} <!-- Here load pages content -->
+        {% endblock %}
+    </main>
+
+    {% block scripts %}
+    <!-- Add scripts here -->
+    {% endblock %}
+</body>
+
+</html>
