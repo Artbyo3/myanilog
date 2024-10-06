@@ -13,19 +13,23 @@
 
     <div class="anime-cards">
 
-        {% for anime in animes %}
+        {% for anime in all_animes %}
 
         <div class="anime-card">
-            <img src="{{ anime.image_url }}" alt="{{ anime.title_romaji }} cover" class="anime-image">
+            <img src="{{ anime.cover_image.url }}" alt="{{ anime.title_romaji }} cover" class="cover-image">
             <h2>{{ anime.title_romaji }}</h2>
             <p>Genres: {{ anime.genres }}</p>
 
-
+    
             {% empty %}
-            <p>Nothing here.</p>
+            <p>No animes available.</p>
             {% endfor %}
 
         </div>
+
+
+        
+
 
     </div>
 

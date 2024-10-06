@@ -1,0 +1,12 @@
+:root {
+
+    --card-width: calc(var(--card-heigth) / 1.5);
+    --card-heigth: 300px
+}
+
+
+
+.anime-cards {
+    width: var(--card-width);
+    height: var(--card-heigth);
+}

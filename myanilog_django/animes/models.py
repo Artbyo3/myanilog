@@ -1,30 +1,34 @@
 import os
+from django.utils.text import slugify
 from django.db import models
+from django.core.validators import MinValueValidator
 
 
-class Genres(models.Model):
+class Genre(models.Model):
     id = models.AutoField(primary_key=True)
-    Genre_name = models.CharField(max_length=20, unique=True)
+    genre_name = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
-        return self.Genre_name
-# END MODEL Genres.
+        return self.genre_name
+# END MODEL genre.
 
 
-# New model for animes
+# New model for anime
 # \Function to generate names for each anime.
+
 def generate_filename(instance, filename):
-    title = instance.title_romaji.replace(" ", "_")
+    title = slugify(instance.title_romaji)
     ext = os.path.splitext(filename)[1]
     return f'anime_images/covers/{title}_cover{ext}'
 
 
-class Animes(models.Model):
+class Anime(models.Model):
     id = models.AutoField(primary_key=True)
     title_romaji = models.CharField(max_length=50)
     title_english = models.CharField(max_length=50, blank=True)
     plot = models.TextField()
-    episodes = models.PositiveIntegerField()
+    episodes = models.PositiveIntegerField(
+        validators=[MinValueValidator(1)], null=True, blank=True)
 
     SEASON_CHOICES = [
         ('WINTER', 'Winter'),
@@ -41,7 +45,7 @@ class Animes(models.Model):
         ('ONA', 'Original Net Animation'),
         ('SPECIAL', 'Special'),
     ]
-    anime_type = models.CharField(max_length=50, choices=ANIME_TYPE_CHOICES)
+    anime_type = models.CharField(max_length=24, choices=ANIME_TYPE_CHOICES)
 
     # score field maybe later.
     start_date = models.DateField()
@@ -50,16 +54,15 @@ class Animes(models.Model):
     cover_image = models.ImageField(
         upload_to=generate_filename, default='anime_images/covers/default_cover.jpg')
 
-    # "ONGOING" = Database entry, "Ongoig" = Human reading value.
-    STATUS_CHOISES = [
+    STATUS_CHOICES = [
         ('ONGOING', 'Ongoing'),
         ('FINISHED', 'Finished'),
     ]
     status = models.CharField(
-        max_length=20, choices=STATUS_CHOISES, default='ONGOING')
+        max_length=20, choices=STATUS_CHOICES, default='ONGOING')
 
     # \ Model many to many with Genres model.
-    genres = models.ManyToManyField(Genres)
+    genres = models.ManyToManyField(Genre)
 
     def __str__(self):
         return self.title_romaji
