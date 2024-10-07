@@ -31,19 +31,19 @@ class Anime(models.Model):
         validators=[MinValueValidator(1)], null=True, blank=True)
 
     SEASON_CHOICES = [
-        ('WINTER', 'Winter'),
-        ('SPRING', 'Spring'),
-        ('SUMMER', 'Summer'),
-        ('FALL', 'Fall'),
+        ('winter', 'Winter'),
+        ('spring', 'Spring'),
+        ('summer', 'Summer'),
+        ('fall', 'Fall'),
     ]
     season = models.CharField(max_length=6, choices=SEASON_CHOICES)
 
     ANIME_TYPE_CHOICES = [
-        ('ANIME', 'Anime Series'),
-        ('MOVIE', 'Movie'),
-        ('OVA', 'Original Video Animation'),
-        ('ONA', 'Original Net Animation'),
-        ('SPECIAL', 'Special'),
+        ('anime', 'Anime Series'),
+        ('movie', 'Movie'),
+        ('ova', 'Original Video Animation'),
+        ('ona', 'Original Net Animation'),
+        ('special', 'Special'),
     ]
     anime_type = models.CharField(max_length=24, choices=ANIME_TYPE_CHOICES)
 
@@ -55,11 +55,11 @@ class Anime(models.Model):
         upload_to=generate_filename, default='anime_images/covers/default_cover.jpg')
 
     STATUS_CHOICES = [
-        ('ONGOING', 'Ongoing'),
-        ('FINISHED', 'Finished'),
+        ('ongoing', 'Ongoing'),
+        ('finished', 'Finished'),
     ]
     status = models.CharField(
-        max_length=20, choices=STATUS_CHOICES, default='ONGOING')
+        max_length=20, choices=STATUS_CHOICES, default='ongoing')
 
     # \ Model many to many with Genres model.
     genres = models.ManyToManyField(Genre)

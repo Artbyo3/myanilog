@@ -25,8 +25,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('animes/', include('animes.urls')),
+    path('user_animes_lists/', include('user_animes_lists.urls')),
 ]
-
 
 # Serving the media files in development mode
 if settings.DEBUG:

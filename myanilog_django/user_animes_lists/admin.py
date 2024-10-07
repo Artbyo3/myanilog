@@ -1,3 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import UserAnimeList
+
+
+class UserAnimeListAdmin(admin.ModelAdmin):
+
+    list_display = ('user', 'anime', 'status', 'rating', 'date_added')
+
+    search_fields = ('user__username', 'anime__title')
+    list_filter = ('status',)
+
+
+admin.site.register(UserAnimeList, UserAnimeListAdmin)

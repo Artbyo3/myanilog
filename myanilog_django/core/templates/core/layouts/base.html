@@ -11,7 +11,12 @@
     
     {% load static %}
     <link rel="stylesheet" href="{% static 'core/common/styles.css' %}">
+    
+    {% block styles %}
+    <!-- App/template styles load here -->
+    {% endblock %}
 </head>
+
 
 <body>
 
@@ -21,6 +26,7 @@
                 <li>
                     <a href="{% url 'index' %}">Animes</a>
                 </li>
+               
                 <li>
                     <a href="{% url 'admin:index' %}">Admin</a>
                 </li>
@@ -29,7 +35,8 @@
     </header>
 
     <main>
-        {% block content %} <!-- Here load pages content -->
+        {% block content %} 
+        <!-- Here load pages content -->
         {% endblock %}
     </main>
 

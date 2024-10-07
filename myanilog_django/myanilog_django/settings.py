@@ -28,8 +28,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'animes'
+    'user',
+    'user_animes_list',
+    'animes',
 ]
+
+AUTH_USER_MODEL = 'user.UserProfile'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

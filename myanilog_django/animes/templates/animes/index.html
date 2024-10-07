@@ -1,40 +1,68 @@
 {% extends 'core/layouts/base.html' %}
 {% load static %}
 {% block title %}#name#{% endblock %}
-{% block content %}
+
+
+
+
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'animes/css/animes_styles.css' %}">
 {% endblock %}
 
+{% block content %}
 <main>
 
     <h1>Animes List</h1>
 
-    <div class="anime-cards">
 
-        {% for anime in all_animes %}
 
-        <div class="anime-card">
-            <img src="{{ anime.cover_image.url }}" alt="{{ anime.title_romaji }} cover" class="cover-image">
-            <h2>{{ anime.title_romaji }}</h2>
-            <p>Genres: {{ anime.genres }}</p>
+    <div class="content-container"> 
 
     
-            {% empty %}
-            <p>No animes available.</p>
-            {% endfor %}
-
-        </div>
 
 
         
+        <div class="anime-cards">
+            
+            {% for anime in all_animes %}
+            
+            <div class="anime-card">
+                <a href="{% url 'anime_detail' anime.pk %}" >  <!-- Detail link-->
+                    <img src="{{ anime.cover_image.url }}" alt="{{ anime.title_romaji }} cover" class="cover-image" >
+                    <h2 class="anime-title">{{ anime.title_romaji }}</h2>
+                    
+                    <p>{{ anime.plot }}</p>
+                    
+                    <p class="anime-genre">Genres: 
+                        {% for genre in anime.genres.all %}
+                        {{ genre.genre_name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    
+                    
+                    
+                    
+                    
+                </div>
+                
+                
+                {% empty %}
+                <p>No animes available.</p>
+                {% endfor %}
+                
+                
+            
+
+
+
 
 
     </div>
+       
+</div>
 
 </main>
-
 
 
 {% endblock %}
