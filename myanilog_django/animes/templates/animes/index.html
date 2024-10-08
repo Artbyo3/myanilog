@@ -19,8 +19,6 @@
 
     <div class="content-container"> 
 
-    
-
 
         
         <div class="anime-cards">
@@ -43,22 +41,27 @@
                     
                     
                     
-                    
                 </div>
-                
                 
                 {% empty %}
                 <p>No animes available.</p>
                 {% endfor %}
-                
-                
-            
-
-
-
-
 
     </div>
+
+    <div>
+                        
+
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">back - </a>
+                        {% endif%}
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">back - </a>
+                        {% endif%}
+                    
+
+                    </div>
+                    
        
 </div>
 

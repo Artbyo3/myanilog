@@ -7,9 +7,7 @@ User = get_user_model()
 
 class UserAnimeList(models.Model):
     id = models.AutoField(primary_key=True)
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
 
     STATUS_CHOICES = [

@@ -1,0 +1,16 @@
+ {% extends "core/layouts/base.html" %}
+
+ {% block content %}
+<ul>
+    {% for item in user_animes_lists %}
+
+
+    <img src="{{ anime.cover_image.url }}" alt="{{ anime.title_romaji }} cover" class="cover-image" >
+    
+        <li>{{ item.anime.title_romaji }} - {{ item.get_status_display }}</li>
+    {% empty %}
+        <li>No animes in list.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

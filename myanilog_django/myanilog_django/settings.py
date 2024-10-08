@@ -29,12 +29,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'user',
-    'user_animes_list',
+    'user_animes_lists',
     'animes',
 ]
 
 AUTH_USER_MODEL = 'user.UserProfile'
-
+LOGIN_URL = 'login'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

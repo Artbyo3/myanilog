@@ -8,7 +8,8 @@ class animes_list_view(ListView):
     model = Anime
     template_name = 'animes/index.html'
     context_object_name = 'all_animes'
-
+    ordering = ["-id"]
+    paginate_by = 9
     def get_queryset(self):
         return Anime.objects.prefetch_related('genres').all()
 

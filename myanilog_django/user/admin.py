@@ -9,7 +9,7 @@ class UserProfileAdmin(UserAdmin):
                     'last_name', 'bio', 'birth_date', 'created_at')
 
     fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('bio', 'birth_date', 'profile_picture', 'favorites')}),
+        (None, {'fields': ('bio', 'birth_date', 'profile_picture', )}),
     )
     readonly_fields = ('created_at',)
 

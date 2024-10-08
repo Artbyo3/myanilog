@@ -10,10 +10,10 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.genre_name
-# END MODEL genre.
+# END MODEL Genre.
 
 
-# New model for anime
+# New model for Anime
 # \Function to generate names for each anime.
 
 def generate_filename(instance, filename):
@@ -63,6 +63,16 @@ class Anime(models.Model):
 
     # \ Model many to many with Genres model.
     genres = models.ManyToManyField(Genre)
+
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['title_romaji']), 
+            models.Index(fields=['start_date', 'end_date']), 
+        ]
+
+
+
 
     def __str__(self):
         return self.title_romaji
