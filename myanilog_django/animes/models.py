@@ -68,5 +68,19 @@ class Anime(models.Model):
         return self.title_romaji
     # END MODEL Animes.
 
+
+
+# New model for AnimeStudio
+#class AnimeStudio(models.Model):
+ # id = models.AutoField(primary_key=True)
+  #name = models.CharField(max_length=50)
+  #name_japaense = models.CharField(max_length=50)
+  #description = models.TextField()
+  #pass
+# END MODEL AnimeStudio
+
+
+
+
     # python manage.py makemigrations
     # python manage.py migrate

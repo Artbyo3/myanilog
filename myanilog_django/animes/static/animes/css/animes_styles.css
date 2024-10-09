@@ -9,11 +9,20 @@
 
 
 
+ 
 
 .content-container {
     columns: 300px;
 
 }
+
+
+
+
+
+
+
+
 
 .anime-card {
     display: flex;

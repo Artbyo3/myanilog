@@ -1,8 +1,19 @@
 main {
     margin: auto;
+
 }
 
-.center {
+.anime-page{
     text-align: center;
     border: 3px solid green;
+
+}
+
+
+ .anime-header img {
+
+width: 15%;
+height: auto;
+border-radius: 20px;
+
 }

@@ -1,35 +1,52 @@
 {% extends 'core/layouts/base.html' %}
 {% load static %}
-
-{% block title %}{{ anime_detail.title_romaji }} - Detalles{% endblock %}
-
+{% block title %} {{ detail_anime.title_romaji }}  Details {% endblock %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'animes/css/animes_detail.css' %}">
 {% endblock %}
 
-
-
-
 {% block content %}
 <main>
 
-<div class="center">
+        <div class="anime-page">
 
-    
-    
-        
-        
-        <h1>{{ detail_anime.title_romaji }}</h1>
-        <img src="{{ detail_anime.cover_image.url }}" alt="{{ detail_anime.title_romaji }} cover">
-        <p>{{ detail_anime.plot }}</p>
-        <p>Genres: 
-            {% for genre in detail_anime.genres.all %}
-            {{ genre.genre_name }}{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        </p>
-        
-        
-    </div>
+                    <header class="anime-header">
+                        <div class="anime-title-section">
+                            <h1 class="anime-title">{{ detail_anime.title_romaji }}</h1>
+                            <p class="anime-title-english">English Title: {{ detail_anime.title_english }}</p>
+                        </div>
+                        <div class="anime-cover">
+                            <img src="{{ detail_anime.cover_image.url }}" alt="{{ detail_anime.title_romaji }} cover image">
+                        </div>
+                    </header>
+                 
+                    <section class="anime-plot-section">
+                        <h2>Plot</h2>
+                        <p>{{ detail_anime.plot }}</p>
+                    </section>
+
+                    <section class="anime-info-section">
+                        <h2>Details</h2>
+                        <p><strong>Episodes:</strong> {{ detail_anime.episodes }}</p>
+                        <p><strong>Season:</strong> {{ detail_anime.season }}</p>
+                        <p><strong>Type:</strong> {{ detail_anime.anime_type }}</p>
+                        <p><strong>Start Date:</strong> {{ detail_anime.start_date }}</p>
+                        <p><strong>End Date:</strong> {{ detail_anime.end_date }}</p>
+                        <p><strong>Status:</strong> {{ detail_anime.status }}</p>
+                    </section>
+                    
+                    <section class="anime-genres-section">
+                        <h2>Genres</h2>
+                        <p>
+                            {% for genre in detail_anime.genres.all %}
+                                {{ genre.genre_name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                    </section>
+                    
+                 
+        </div>
+     
     
 </main>
 

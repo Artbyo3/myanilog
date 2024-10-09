@@ -1,11 +1,7 @@
 {% extends 'core/layouts/base.html' %}
 {% load static %}
+
 {% block title %}#name#{% endblock %}
-
-
-
-
-
 {% block styles %}
 <link rel="stylesheet" href="{% static 'animes/css/animes_styles.css' %}">
 {% endblock %}
@@ -13,57 +9,50 @@
 {% block content %}
 <main>
 
-    <h1>Animes List</h1>
+        <h1>Animes List</h1>
 
+        <div class="content-container"> 
 
-
-    <div class="content-container"> 
-
-
-        
-        <div class="anime-cards">
-            
-            {% for anime in all_animes %}
-            
-            <div class="anime-card">
-                <a href="{% url 'anime_detail' anime.pk %}" >  <!-- Detail link-->
-                    <img src="{{ anime.cover_image.url }}" alt="{{ anime.title_romaji }} cover" class="cover-image" >
-                    <h2 class="anime-title">{{ anime.title_romaji }}</h2>
-                    
-                    <p>{{ anime.plot }}</p>
-                    
-                    <p class="anime-genre">Genres: 
-                        {% for genre in anime.genres.all %}
-                        {{ genre.genre_name }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </p>
-                    
-                    
-                    
-                    
-                </div>
+            <div class="anime-cards">
                 
-                {% empty %}
-                <p>No animes available.</p>
-                {% endfor %}
-
-    </div>
-
-    <div>
+                {% for anime in all_animes %}
+                
+                <div class="anime-card">
+                    <a href="{% url 'anime_detail' anime.pk %}" >  <!-- Detail link-->
+                        <img src="{{ anime.cover_image.url }}" alt="{{ anime.title_romaji }} cover" class="cover-image" >
                         
-
-                        {% if page_obj.has_previous %}
-                            <a href="?page={{ page_obj.previous_page_number }}">back - </a>
-                        {% endif%}
-                        {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.next_page_number }}">back - </a>
-                        {% endif%}
-                    
-
+                        <h2 class="anime-title">{{ anime.title_romaji }}</h2>
+                        
+                        <p>{{ anime.plot }}</p>
+                        
+                        <p class="anime-genre">Genres: 
+                            {% for genre in anime.genres.all %}
+                            {{ genre.genre_name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                        
                     </div>
+                                        
+                                        {% empty %}
+                                        <p>No animes available.</p>
+                                        {% endfor %}
+
+
                     
-       
-</div>
+                    </a>
+                             <div>
+                            
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}">back - </a>
+                            {% endif%}
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">back - </a>
+                            {% endif%}
+                        
+                             </div>
+                        
+           
+    </div>
 
 </main>
 
